@@ -12,17 +12,43 @@
 		$(document).ready(function(){
     	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     	$('.modal').modal();
+    	ncsistem.Generar_header();
     });
-</script>
+
+		ncsistem=
+		{
+			Generar_header:function()
+			{
+				var ses_idperfil = $("#ses_idperfil").text();
+
+				if (ses_idperfil == 1) {
+					var HTML = '<li><a href="<?php echo base_url(); ?>">Home</a></li>';
+				}
+				$("#nav_header").empty().append(HTML);
+			}
+		}
+
+	</script>
 </head>
 <body>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo right">Safiro</a>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="<?php echo base_url(); ?>">Home</a></li>
-					<li><a href="<?php echo base_url(); ?>home/history">History</a></li>
-					<li><a href="<?php echo base_url(); ?>dashboard/">Dashboard</a></li>
-				</ul>
-			</div>
-		</nav>
+	<div class="hide" id="ses_idperfil"><?=$idperfil?></div>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" data-constrainWidth="false" class="brand-logo right dropdown-button" data-hover="true" data-activates='dropdown1'>Safiro</a>
+			<ul id='dropdown1' class='dropdown-content'>
+				<li><a href="#!"><?=$nombre?> <?=$apellido?></a></li>
+				<li><a href="#!">three</a></li>
+				<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+				<li><a href="<?php echo base_url() ?>usuario/cerrar_sesion"><i class="material-icons">cloud</i>Cerrar sesion</a></li>
+			</ul>
+			
+			<ul id="nav_header" class="left hide-on-med-and-down">
+				<!--
+				<li><a href="<?php echo base_url(); ?>">Home</a></li>
+				<li><a href="<?php echo base_url(); ?>home/history">History</a></li>
+				<li><a href="<?php echo base_url(); ?>dashboard/">Dashboard</a></li>
+			-->
+		</ul>
+
+	</div>
+</nav>

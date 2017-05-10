@@ -25,10 +25,13 @@ class Usuario extends CI_Controller {
 				$usuario_data = array(
 					'idusuario' => $usuario[0]['idusuario'],
 					'nombre' => $usuario[0]['nombre'],
+					'apellido' => $usuario[0]['apellido'],
+					'idperfil' => $usuario[0]['idperfil'],
+					'correo' => $usuario[0]['correo'],
 					'logueado' => TRUE
 					);
 				$this->session->set_userdata($usuario_data);
-				redirect('usuario/logueado');
+				redirect('home');
 			} else {
 				redirect('usuario/login');
 			}
@@ -41,6 +44,7 @@ class Usuario extends CI_Controller {
 		if($this->session->userdata('logueado')){
 			$data = array();
 			$data['nombre'] = $this->session->userdata('nombre');
+			$data['apellido'] = $this->session->userdata('apellido');
 			$this->load->view('usuario/logueado', $data);
 		}else{
 			redirect('usuario/login');
@@ -53,7 +57,7 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-		
+		$this->login();
 	}
 
 }

@@ -5,7 +5,7 @@
     <title> Usuarios </title>
  </head>
  <body>
-    <h1> Bienvenido/a <?php echo $nombre ?> </h1>
+    <h1> Bienvenido/a <?php echo $apellido ?> </h1>
     <p>
        <a href="<?php echo base_url() ?>usuario/cerrar_sesion"> Cerrar sesión </a>
     </p>

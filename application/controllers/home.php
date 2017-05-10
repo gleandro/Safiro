@@ -7,19 +7,25 @@ class Home extends CI_Controller
 		parent::__construct();
 	}
 	
+	function crear_vista(){
+		$data = array();
+		$data['nombre'] = $this->session->userdata('nombre');
+		$data['apellido'] = $this->session->userdata('apellido');
+		$data['idperfil'] = $this->session->userdata('idperfil');
+		$datos_plantilla["header"] = $this->load->view('util/header',$data, true);
+		$datos_plantilla["footer"] = $this->load->view('util/footer','', true);
+		return $datos_plantilla;
+	}
+
+
 	function index()
 	{
-		$datos_plantilla["header"] = $this->load->view('util/header','', true);
-		$datos_plantilla["footer"] = $this->load->view('util/footer','', true);
-		$this->load->view('home/index',$datos_plantilla);
-
+		$this->load->view('home/index',$this->crear_vista());
 	}
 
 	function History()
 	{
-		$datos_plantilla["header"] = $this->load->view('util/header','', true);
-		$datos_plantilla["footer"] = $this->load->view('util/footer','', true);
-		$this->load->view('home/history',$datos_plantilla);
+		$this->load->view('home/history',$this->crear_vista());
 	}
 }
 
